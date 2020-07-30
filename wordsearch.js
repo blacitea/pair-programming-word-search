@@ -1,21 +1,51 @@
 const wordSearch = (letters, word) => {
   const horizontalJoin = letters.map(ls => ls.join(''));
+  console.log(letters);
   const verticalJoin = transpose(letters).map(ls => ls.join(''));
+  console.log(letters);
+  const backWard = letters;
+  console.log("new copy of letters:", backWard);
+
+  const diagonalSearch = (matrix, name) => {
+    console.log(matrix);
+    let fromSearch = "";
+    let splitWord = name.split('');
+    for (let items of matrix) {
+      for (let i = 0; i < items.length; i++) {
+        // console.log("i", i, "items", items);
+        // console.log("splitWord[i]", splitWord[i]);
+        // console.log("items[i]", items[i]);
+
+        if (splitWord[i] && splitWord[i] === items[i]) {
+          fromSearch += splitWord[i];
+          console.log(fromSearch);
+          break;
+        }
+        if (fromSearch === word) {
+          return true;
+        }
+      }
+    }
+  };
+    
+  if (diagonalSearch(letters, word)) {
+    return true;
+  }
+
   const horizontalBack = letters.map(ls => ls.reverse().join(''));
   const verticalBack = transpose(letters).map(ls => ls.reverse().join(''));
-
+  
 
   for (let h of horizontalJoin) {
     if (h.includes(word)) return true;
   }
-  for (let v of verticalJoin) {
-    if (v.includes(word)) return true;
-  }
   for (let hb of horizontalBack) {
     if (hb.includes(word)) return true;
   }
+  for (let v of verticalJoin) {
+    if (v.includes(word)) return true;
+  }
   for (let vb of verticalBack) {
-    console.log(vb);
     if (vb.includes(word)) return true;
   }
   return false;

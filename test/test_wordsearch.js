@@ -3,7 +3,8 @@ const assert = chai.assert;
 
 const wordSearch = require('../wordsearch.js');
 
-describe("#wordSearch()", function() {
+describe("#wordSearch()", function () {
+  /*
   it("should return false if the horizontal word is not present", function() {
     const result = wordSearch([
       ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
@@ -125,6 +126,7 @@ describe("#wordSearch()", function() {
     
     assert.isFalse(result);
   });
+  */
   it("should return true if the diagonally word is present", function() {
     const result = wordSearch([
       ['F','W','C','F','Q','U','A','L'],
